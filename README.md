@@ -1,50 +1,53 @@
-# Fragmentarium
+# RapidTools Hub
 
-## Overview
-
-This project aims to build a scalable microservices-based system that provides an HTTP REST API for existing apps, servers, and devices. The system enables the creation, retrieval, update, and deletion (CRUD) of small fragments of text and images. Additionally, it supports the conversion of fragment data between different formats without increasing storage costs. All fragment data is stored along with relevant information such as size, type, and creation/modification dates. Proper authorization ensures data isolation between different users in the system, and the architecture is designed for scalability.
+Welcome to RapidTools Hub - Your one-stop destination for fast and efficient online tools!
 
 ## Features
 
-1. **RESTful API:**
-   - Provides HTTP REST API for seamless integration with existing apps, servers, and devices.
+🚀 **URL Shortener**
+   - Shorten long URLs with ease.
+   - In-build process for swift URL shortening.
 
-2. **CRUD Operations:**
-   - Enables the creation, retrieval, update, and deletion of small fragments of text and images.
+🔄 **Word Counter**
+   - Coming soon.
 
-3. **Format Conversion:**
-   - Supports conversion of fragment data between different formats (e.g., Markdown to HTML) without increasing storage costs.
+✂️ **Cut Tool**
+   - Coming soon.
 
-4. **Metadata Management:**
-   - Stores fragment data along with metadata, including size, type, and creation/modification dates.
-
-5. **Authorization:**
-   - Implements proper authorization to ensure data isolation between different users.
-
-6. **Scalability:**
-   - Built to scale, allowing the system to store massive amounts of data.
-
-7. **GitHub and CI/CD:**
-   - Developed on GitHub with an automated build, test, and deployment pipeline to AWS.
+🌐 **Image Conversions**
+   - Coming soon.
 
 ## Architecture
 
-The system is designed using a microservices architecture, with key components including:
+RapidTools Hub follows a microservices architecture, providing modular and scalable services.
+Here's a brief overview of our architecture:
 
-- **API Gateway:** Manages HTTP requests, handles authentication, and routes requests to the appropriate microservice.
-  
-- **User Service:** Manages user data and authentication, ensuring secure access to the system.
-  
-- **Fragment Service:** Handles CRUD operations for text and images, and manages storage, retrieval, and format conversions.
+### Microservices
 
-- **Conversion Service:** Responsible for efficient format conversions without increasing storage costs.
+- **URL Shortener Service:** Handles the URL shortening process efficiently.
+- **Word Counter Service:** For counting words in text content.
+- **Cut Tool Service:** For content cutting and manipulation.
+- **Image Conversions Service:** Supports various image conversion operations.
 
-- **Database (DynamoDB):** Stores fragment data, including metadata, in a scalable and low-latency manner.
+### Database
 
-## Contributing
+We leverage databases to store necessary data for each service. For example, the URL Shortener service uses a database to store shortened URLs and their corresponding original URLs.
 
-We welcome contributions! If you would like to contribute to the project, please check out our [Contribution Guidelines](link-to-contribution-guidelines).
+### Communication
 
-## License
+The Frontend communicates with the Backend through RESTful APIs. We ensure seamless integration and data flow between microservices to provide a cohesive user experience.
 
-This project is licensed under the [LICENSE NAME](link-to-license-file).
+### Scalability
+
+Each microservice is designed to be independent, allowing for scalability based on the demand for specific services. Docker containers and orchestration tools facilitate easy deployment and scaling.
+
+## Getting Started
+
+1. Clone the repository: `git clone https://github.com/hamitsehjal/rapidtools-hub.git`
+2. Navigate to the project directory: `cd rapidtools-hub`
+3. Install dependencies: `npm install`
+4. Run the app: `npm start`
+
+Feel free to explore and contribute to RapidTools Hub! We are excited to bring more features to enhance your experience.
+
+Happy tooling! 🛠️
