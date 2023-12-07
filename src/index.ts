@@ -27,9 +27,9 @@ app.use(compression());
 // Using CORS so we can make requests Cross-Origin
 app.use(cors());
 
-const port = process.env.PORT;
 
-// Health Check Route. If server is healthy, we return `200 OK` response. If not, server isn't healthy
+// Health Check Route. 
+// If server is healthy, we return `200 OK` response. If not, server isn't healthy
 app.get('/', (req: Request, res: Response) => {
 
   // Client shouldn't cache this response (always request it fresh)
@@ -43,6 +43,40 @@ app.get('/', (req: Request, res: Response) => {
 
   })
 })
-app.listen(port, () => {
-  console.log(`Express Server running on PORT: ${port}`);
+
+// 404 Middleware - resource,route not Found
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    status: "error",
+    error: {
+      message: "Not Found",
+      code: 404,
+    }
+  })
 });
+
+// Catch-All Error Handler - triggered whenever an `error` is passed to `next` function
+//Error-Handling Middleware to deal with anything else example: Server errors
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+app.use((err: any, req: Request, res: Response) => {
+  const status = err.status || 500;
+  const message = err.message || "Cannot process the Request";
+
+  // If this is a server error, log something so we can see what's going on
+  if (status > 499) {
+    logger.error({ err }, `Error Processing Request`);
+  }
+
+  res.status(status).json({
+    status: "error",
+    error: {
+      message,
+      code: status,
+    }
+  })
+
+});
+
+export default app;
+
+
