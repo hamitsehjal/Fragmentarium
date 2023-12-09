@@ -4,8 +4,7 @@ import compression from "compression";
 import cors from "cors";
 import "dotenv/config";
 
-import { version, author, repository } from '../package.json';
-
+import apiRoutes from './routes';
 import logger from './logger';
 import pinoHTTP from 'pino-http';
 const pino = pinoHTTP({
@@ -27,22 +26,12 @@ app.use(compression());
 // Using CORS so we can make requests Cross-Origin
 app.use(cors());
 
+// parse incoming JSON Requests
+app.use(express.json())
 
-// Health Check Route. 
-// If server is healthy, we return `200 OK` response. If not, server isn't healthy
-app.get('/', (req: Request, res: Response) => {
+// Letting express know to use the routes defined in 'route' module for handling request to `root URL /`
+app.use('/', apiRoutes);
 
-  // Client shouldn't cache this response (always request it fresh)
-  res.setHeader('Cache-Control', 'no-cache');
-
-  res.status(200).json({
-    status: 'ok',
-    author,
-    version,
-    github: repository.url.split('+')[1],
-
-  })
-})
 
 // 404 Middleware - resource,route not Found
 app.use((req: Request, res: Response) => {

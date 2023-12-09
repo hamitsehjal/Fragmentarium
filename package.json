@@ -1,7 +1,7 @@
 {
   "name": "rapidtools-hub",
   "version": "0.0.1",
-  "description": "One Stop Solution for basic utilities - Convert Long Urls to Short, word count, image convertions, etc",
+  "description": "One Stop Solution for basic utilities - Convert Long Urls to Short, word count, image conversions, etc",
   "main": "src/index.ts",
   "scripts": {
     "start": "npm run build && node ./dist/server.js",
